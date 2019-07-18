@@ -10,6 +10,7 @@ import RoutePublic from './components/RoutePublic';
 import GlobalStyles from './components/GlobalStyles';
 import './App.css';
 import { EmptyLayout, MainLayout } from './components/Layouts';
+import Login from './components/Login';
 
 const AsyncHome = lazy(() => import('./container/Home'));
 
@@ -33,7 +34,9 @@ function App() {
                 path="/"
                 component={AsyncHome}
                 layout={MainLayout}
+                exact
               />
+              <RoutePublic isAuthenticated={false}  path="/login/" component={Login} layout={EmptyLayout} />
             </Switch>
           </Suspense>
           <GlobalStyles />

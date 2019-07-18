@@ -122,7 +122,7 @@ const Header = () => (<Wrap>
     <MenuButton><FontAwesomeIcon icon={faTh}/></MenuButton>
     <MenuButton><FontAwesomeIcon icon={faCommentDots}/></MenuButton>
     <MenuButton><FontAwesomeIcon icon={faEllipsisV}/></MenuButton>
-    <SignIn to={`/sign_in`}><FontAwesomeIcon icon={faUserCircle}/>Sign In</SignIn>
+    <SignIn to={`/login`}><FontAwesomeIcon icon={faUserCircle}/>Sign In</SignIn>
   </HeaderRight>
 </Wrap>);
 

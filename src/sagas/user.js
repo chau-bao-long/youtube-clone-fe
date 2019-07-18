@@ -4,25 +4,32 @@
  */
 
 import { all, delay, put, takeLatest } from 'redux-saga/effects';
+import axios from 'axios';
 
 import { ActionTypes } from '../constants';
+import history from '../modules/history';
 
 /**
  * Login
  */
-export function* login() {
+export function* login(action) {
+  const { values, meta: { setSubmitting }} = action.payload;
   try {
-    yield delay(400);
-
-    yield put({
-      type: ActionTypes.USER_LOGIN_SUCCESS,
-    });
+    const response = yield axios.post('http://localhost:3000/login', values);
+    if (response.data.message === "ok") {
+      yield put({
+        type: ActionTypes.USER_LOGIN_SUCCESS,
+      });
+    };
+    history.push("/");
   } catch (err) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_LOGIN_FAILURE,
       payload: err,
     });
+  } finally {
+    setSubmitting(false);
   }
 }
 
